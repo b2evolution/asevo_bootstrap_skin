@@ -15,13 +15,13 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  *
  * ATTENTION: if you make a new skin you have to change the class name below accordingly
  */
-class bootstrap_blog_Skin extends Skin
+class asevo_bootstrap_Skin extends Skin
 {
 	/**
 	 * Skin version
 	 * @var string
 	 */
-	var $version = '6.7.7';
+	var $version = '1.0.0';
 
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
@@ -36,7 +36,7 @@ class bootstrap_blog_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Bootstrap Blog';
+		return 'Asevo Bootstrap Skin';
 	}
 
 
