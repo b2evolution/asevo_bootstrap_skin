@@ -276,13 +276,13 @@ siteskin_include( '_site_body_header.inc.php' );
 			skin_container( NT_('Sidebar'), array(
 					// The following (optional) params will be used as defaults for widgets included in this container:
 					// This will enclose each widget in a block:
-					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
+					'block_start' => '<div class="evo_widget $wi_class$">',
 					'block_end' => '</div>',
 					// This will enclose the title of each widget:
-					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_start' => '<div class="widget-heading"><h4 class="widget-heading-title">',
 					'block_title_end' => '</h4></div>',
 					// This will enclose the body of each widget:
-					'block_body_start' => '<div class="panel-body">',
+					'block_body_start' => '<div class="widget-body">',
 					'block_body_end' => '</div>',
 					// If a widget displays a list, this will enclose that list:
 					'list_start' => '<ul>',

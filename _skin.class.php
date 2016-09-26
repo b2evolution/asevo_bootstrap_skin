@@ -100,6 +100,17 @@ class asevo_bootstrap_Skin extends Skin
 							),
 						'type' => 'select',
 					),
+					'layout' => array(
+						'label' => T_('Container width'),
+						'note' => T_('Select skin container width.'),
+						'defaultvalue' => 'default',
+						'options' => array(
+								'narrow_container'       => T_('Narrow container'),
+								'default_container'      => T_('Default container'),
+								'wide_container'       => T_('Wide container'),
+							),
+						'type' => 'select',
+					),
 					'max_image_height' => array(
 						'label' => T_('Max image height'),
 						'note' => 'px. ' . T_('Set maximum height for post images.'),
@@ -107,22 +118,49 @@ class asevo_bootstrap_Skin extends Skin
 						'type' => 'integer',
 						'allow_empty' => true,
 					),
-					'font_size' => array(
-						'label' => T_('Font size'),
-						'note' => T_('Select content font size.'),
-						'defaultvalue' => 'default',
-						'options' => array(
-								'default'        => T_('Default (14px)'),
-								'standard'       => T_('Standard (16px)'),
-								'medium'      	 => T_('Medium (18px)'),
-								'large' 		 => T_('Large (20px)'),
-								'very_large'     => T_('Very large (22px)'),
-							),
-						'type' => 'select',
-					),
 				'section_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
+				
+				
+				'section_title_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Layout Settings')
+				),
+					'title_links_color' => array(
+						'label' => T_('Titles color'),
+						'note' => T_('Set color for the post titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+						'defaultvalue' => '#e63e41',
+						'type' => 'color',
+					),
+					'titles_bold' => array(
+						'label' => T_('Titles format'),
+						'note' => T_('Bold'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'titles_italic' => array(
+						'label' => '',
+						'note' => T_('Italic'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'titles_border' => array(
+						'label' => '',
+						'note' => T_('Bottom border'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'titles_border_color' => array(
+						'label' => T_('Titles border color'),
+						'note' => T_('Set color for the border below titles.') . T_('Default value is') . ': <code>#3e4651</code>.',
+						'defaultvalue' => '#3e4651',
+						'type' => 'color',
+					),
+				'section_title_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
 
 				'section_colorbox_start' => array(
 					'layout' => 'begin_fieldset',
@@ -262,65 +300,15 @@ class asevo_bootstrap_Skin extends Skin
 		// Add custom CSS:
 		$custom_css = '';
 
-
-		// Font size customization
-		if( $font_size = $this->get_setting( 'font_size' ) )
-		{
-			switch( $font_size )
-			{
-				case 'default': // When default font size, no CSS entry
-				$custom_css = '';
-				break;
-
-				case 'standard':// When standard layout
-				$custom_css = '.container p, .container ul li, .container div, .container label, .container textarea, .container input { font-size: 16px !important'." }\n";
-				$custom_css .= '.container input.search_field { height: 100%'." }\n";
-				$custom_css .= '.container h1 { font-size: 38px'." }\n";
-				$custom_css .= '.container h2 { font-size: 32px'." }\n";
-				$custom_css .= '.container h3 { font-size: 26px'." }\n";
-				$custom_css .= '.container h4 { font-size: 18px'." }\n";
-				$custom_css .= '.container h5 { font-size: 16px'." }\n";
-				$custom_css .= '.container h6 { font-size: 14px'." }\n";
-				$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-				break;
-
-				case 'medium': // When default font size, no CSS entry
-				$custom_css = '.container p, .container ul li, .container div, .container label, .container textarea, .container input { font-size: 18px !important'." }\n";
-				$custom_css .= '.container input.search_field { height: 100%'." }\n";
-				$custom_css .= '.container h1 { font-size: 40px'." }\n";
-				$custom_css .= '.container h2 { font-size: 34px'." }\n";
-				$custom_css .= '.container h3 { font-size: 28px'." }\n";
-				$custom_css .= '.container h4 { font-size: 20px'." }\n";
-				$custom_css .= '.container h5 { font-size: 18px'." }\n";
-				$custom_css .= '.container h6 { font-size: 16px'." }\n";
-				$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-				break;
-
-				case 'large': // When default font size, no CSS entry
-				$custom_css = '.container p, .container ul li, .container div, .container label, .container textarea, .container input { font-size: 20px !important'." }\n";
-				$custom_css .= '.container input.search_field { height: 100%'." }\n";
-				$custom_css .= '.container h1 { font-size: 42px'." }\n";
-				$custom_css .= '.container h2 { font-size: 36px'." }\n";
-				$custom_css .= '.container h3 { font-size: 30px'." }\n";
-				$custom_css .= '.container h4 { font-size: 22px'." }\n";
-				$custom_css .= '.container h5 { font-size: 20px'." }\n";
-				$custom_css .= '.container h6 { font-size: 18px'." }\n";
-				$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-				break;
-
-				case 'very_large': // When default font size, no CSS entry
-				$custom_css = '.container p, .container ul li, .container div, .container label, .container textarea, .container input { font-size: 22px !important'." }\n";
-				$custom_css .= '.container input.search_field { height: 100%'." }\n";
-				$custom_css .= '.container h1 { font-size: 44px'." }\n";
-				$custom_css .= '.container h2 { font-size: 38px'." }\n";
-				$custom_css .= '.container h3 { font-size: 32px'." }\n";
-				$custom_css .= '.container h4 { font-size: 24px'." }\n";
-				$custom_css .= '.container h5 { font-size: 22px'." }\n";
-				$custom_css .= '.container h6 { font-size: 20px'." }\n";
-				$custom_css .= '.container .small { font-size: 85% !important'." }\n";
-				break;
-			}
-		}
+		
+		/**
+		 * Titles customization
+		 */
+		 if( $color = $this->get_setting( 'title_links_color' ) )
+		 {
+			 $custom_css .= ".evo_post_title a { color: $color }";
+		 }
+		
 
 		if( ! empty( $custom_css ) )
 		{ // Function for custom_css:

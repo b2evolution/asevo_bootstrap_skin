@@ -16,11 +16,22 @@
 
 // ------------- Organization Members widget -------------
 @import "../../rsc/less/_org_members_widget.module.less";
-	// Override constants used in the module:
-	@widget_core_org_members-color: #333;
-	@widget_core_org_members-user-link-color: #000;
-	@widget_core_org_members-user-link-hover-color: #23527c;
 // -------------------------------------------------------
+
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:400,800");
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Alegreya Sans', sans-serif;
+	
+	a {
+	border-bottom: 1px solid #eee;
+	}
+}
+.titles-bold h2 a {
+	font-weight: 800;
+}
+.titles-italic h2 a {
+	font-style: italic;
+}
 
 // Header
 .evo_container__header {
@@ -346,7 +357,12 @@ div.action_messages, div.log_container {
 	h2 {
 		display: table-cell;
 		margin: 0;
-		padding: 20px 0 10px;
+		padding: 0;
+	}
+	a.edit_post_button {
+		position: absolute;
+		right: 0;
+		top: 3px;
 	}
 	.btn-group {
 		display: table-cell;
