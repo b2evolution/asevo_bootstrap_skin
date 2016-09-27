@@ -15,16 +15,20 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 global $Item, $Skin, $app_version;
 
-	$title_classes = '';
-	if( $Skin->get_setting( 'titles_bold' ) == 1 ) {
-		$title_classes .= ' titles-bold';
-	}
-	if( $Skin->get_setting( 'titles_italic' ) == 1 ) {
-		$title_classes .= ' titles-italic';
-	}
-	if( $Skin->get_setting( 'titles_border' ) == 1 ) {
-		$title_classes .= ' titles-border';
-	}
+// Title customization params
+$title_classes = '';
+if( $Skin->get_setting( 'titles_bold' ) == 1 ) {
+	$title_classes .= ' titles-bold';
+}
+if( $Skin->get_setting( 'titles_italic' ) == 1 ) {
+	$title_classes .= ' titles-italic';
+}
+if( $Skin->get_setting( 'titles_uppercase' ) == 1 ) {
+	$title_classes .= ' titles-uppercase';
+}
+if( $Skin->get_setting( 'titles_border' ) == 1 ) {
+	$title_classes .= ' titles-border';
+}
 
 // Default params:
 $params = array_merge( array(
@@ -115,21 +119,21 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 
 		// We want to display the post time:
 		$Item->issue_time( array(
-				'before'      => ' '.T_('posted on '),
+				'before'      => ' ',
 				'after'       => ' ',
-				'time_format' => 'M j, Y',
+				'time_format' => 'm/j/y h:i a,',
 			) );
 
 		// Author
 		$Item->author( array(
 			'before'    => /* TRANS: author name */ ' '.T_('by').' ',
-			'after'     => ' ',
+			'after'     => ', ',
 			'link_text' => $params['author_link_text'],
 		) );
 
 		// Categories
 		$Item->categories( array(
-			'before'          => /* TRANS: category name(s) */ T_('in').' ',
+			'before'          => /* TRANS: category name(s) */ T_('categories').': ',
 			'after'           => ' ',
 			'include_main'    => true,
 			'include_other'   => true,

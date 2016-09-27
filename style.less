@@ -18,12 +18,19 @@
 @import "../../rsc/less/_org_members_widget.module.less";
 // -------------------------------------------------------
 
-@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:400,800");
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Alegreya Sans', sans-serif;
-	
-	a {
-	border-bottom: 1px solid #eee;
+// ----------------- Bootstrap overrides -----------------
+.nav {margin:0}.navbar{border-radius:0;border:none}.navbar-collapse{padding:0}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700,800");
+.evo_post {
+	h2 {
+		font-family: 'Open Sans', sans-serif;
+		a {
+			padding-bottom: 6px;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 }
 .titles-bold h2 a {
@@ -32,6 +39,23 @@ h1, h2, h3, h4, h5, h6 {
 .titles-italic h2 a {
 	font-style: italic;
 }
+.titles-uppercase h2 a {
+	text-transform: uppercase;
+}
+.titles-border {
+	border-bottom: 1px solid #eee;
+}
+@media (min-width: 1200px) {
+	.container-narrow {
+		width: 800px;
+	}
+}
+@media (min-width: 1600px) {
+	.container-wide {
+		width: 1540px;
+	}
+}
+
 
 // Header
 .evo_container__header {
@@ -46,17 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 .nav.nav-tabs {
 	margin-top: 0;
 }
-
-// Intro post - Featured post background images sample
-//.well {
-//	background: url(images/7T0W8MYRN0.jpg) no-repeat center center;
-//	-webkit-background-size: cover;
-//	-moz-background-size: cover;
-//	-o-background-size: cover;
-//	background-size: cover;
-//	width: 100%;
-//	height: auto;
-//}
 
 // Login widget form
 .widget_core_user_login {
@@ -217,18 +230,13 @@ textarea.message_text {
 }
 
 .evo_post {
-	margin-bottom: 2em;
+	margin-bottom: 4em;
 	.small.text-muted {
 		margin: 4px 0 10px;
 		a, a .glyphicon {
 			color: inherit;
 		}
 	}
-// MILOS > @fp - This makes both "Comments" and "Full Story" button are displayed inline
-//	.more_link_button, .post_comments_link {
-//		display: inline-block;
-//		margin-right: 5px;
-//	}
 }
 
 div.bSideItem {
@@ -354,15 +362,16 @@ div.action_messages, div.log_container {
 // Positions on the action buttons near page titles
 .evo_post_title {
 	display: table;
+	width: 100%;
 	h2 {
 		display: table-cell;
+		font-size: 20px;
 		margin: 0;
-		padding: 0;
+		padding-bottom: 6px;
 	}
 	a.edit_post_button {
-		position: absolute;
-		right: 0;
-		top: 3px;
+		display: table-cell;
+		margin-bottom: -5px;
 	}
 	.btn-group {
 		display: table-cell;

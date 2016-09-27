@@ -70,6 +70,14 @@ class asevo_bootstrap_Skin extends Skin
 	{
 		return 'bootstrap';
 	}
+	
+	
+	function disabled_fields($param)
+	{
+		if( $this->get_setting( $param ) == 0 ) {
+			echo '<style>#edit_plugin_11_set_titles_border_color:hover{cursor:default}</style>';
+		}
+	}
 
 
 	/**
@@ -100,13 +108,13 @@ class asevo_bootstrap_Skin extends Skin
 							),
 						'type' => 'select',
 					),
-					'layout' => array(
+					'container_width' => array(
 						'label' => T_('Container width'),
 						'note' => T_('Select skin container width.'),
 						'defaultvalue' => 'default',
 						'options' => array(
-								'narrow_container'       => T_('Narrow container'),
-								'default_container'      => T_('Default container'),
+								'narrow_container'     => T_('Narrow container'),
+								'default_container'    => T_('Default container'),
 								'wide_container'       => T_('Wide container'),
 							),
 						'type' => 'select',
@@ -142,6 +150,12 @@ class asevo_bootstrap_Skin extends Skin
 					'titles_italic' => array(
 						'label' => '',
 						'note' => T_('Italic'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'titles_uppercase' => array(
+						'label' => T_(''),
+						'note' => T_('Uppercase'),
 						'defaultvalue' => 0,
 						'type' => 'checkbox',
 					),
