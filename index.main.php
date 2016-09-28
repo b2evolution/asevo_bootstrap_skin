@@ -46,8 +46,6 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 }
 ?>
 
-<div class="<?php echo $container_classes; ?>">
-
 <nav class="navbar navbar-default">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -58,7 +56,8 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
         <span class="icon-bar"></span>
       </button>
     </div>
-
+	
+	<div class="<?php echo $container_classes; ?>">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -84,7 +83,10 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 		?>
       </ul>
     </div><!-- /.navbar-collapse -->
+    </div><!-- /.navbar-collapse -->
 </nav>
+
+<div class="<?php echo $container_classes; ?>">
 
 <header class="row">
 

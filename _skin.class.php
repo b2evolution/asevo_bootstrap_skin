@@ -111,13 +111,25 @@ class asevo_bootstrap_Skin extends Skin
 					'container_width' => array(
 						'label' => T_('Container width'),
 						'note' => T_('Select skin container width.'),
-						'defaultvalue' => 'default',
+						'defaultvalue' => 'narrow_container',
 						'options' => array(
 								'narrow_container'     => T_('Narrow container'),
 								'default_container'    => T_('Default container'),
 								'wide_container'       => T_('Wide container'),
 							),
 						'type' => 'select',
+					),
+					'background_color' => array(
+						'label' => T_('Background color'),
+						'note' => T_('Set the skin background color.') . T_('Default value is') . ': <code>#ffffff</code>.',
+						'defaultvalue' => '#ffffff',
+						'type' => 'color',
+					),
+					'content_color' => array(
+						'label' => T_('Content color'),
+						'note' => T_('Set the content color.') . T_('Default value is') . ': <code>#333333</code>.',
+						'defaultvalue' => '#333333',
+						'type' => 'color',
 					),
 					'max_image_height' => array(
 						'label' => T_('Max image height'),
@@ -131,14 +143,53 @@ class asevo_bootstrap_Skin extends Skin
 				),
 				
 				
+				'section_menu_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Layout Settings')
+				),
+					'menu_bg_color' => array(
+						'label' => T_('Menu background color'),
+						'note' => T_('Set the background color of the menu section.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'defaultvalue' => '#3E4651',
+						'type' => 'color',
+					),
+					'menu_link_color' => array(
+						'label' => T_('Menu links color'),
+						'note' => T_('Set the color of the menu links.') . T_('Default value is') . ': <code>#cccccc</code>.',
+						'defaultvalue' => '#cccccc',
+						'type' => 'color',
+					),
+					'active_link_bg_color' => array(
+						'label' => T_('Active link background color'),
+						'note' => T_('Set the background color of the active menu link.') . T_('Default value is') . ': <code>#e7e7e7</code>.',
+						'defaultvalue' => '#e7e7e7',
+						'type' => 'color',
+					),
+					'active_link_color' => array(
+						'label' => T_('Active link color'),
+						'note' => T_('Set the color of the active menu link.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'defaultvalue' => '#3E4651',
+						'type' => 'color',
+					),
+				'section_menu_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
 				'section_title_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Layout Settings')
 				),
 					'title_links_color' => array(
 						'label' => T_('Titles color'),
-						'note' => T_('Set color for the post titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+						'note' => T_('Set color for post titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
 						'defaultvalue' => '#e63e41',
+						'type' => 'color',
+					),
+					'title_links_color_h' => array(
+						'label' => T_('Titles hover color'),
+						'note' => T_('Set color for hovering post titles.') . T_('Default value is') . ': <code>#878B91</code>.',
+						'defaultvalue' => '#878B91',
 						'type' => 'color',
 					),
 					'titles_bold' => array(
@@ -314,6 +365,40 @@ class asevo_bootstrap_Skin extends Skin
 		// Add custom CSS:
 		$custom_css = '';
 
+
+		/**
+		 * General customization
+		 */
+		if( $color = $this->get_setting( 'background_color' ) )
+		{
+			$custom_css .= "#skin_wrapper { background-color: $color }";
+		}
+		if( $color = $this->get_setting( 'content_color' ) )
+		{
+			$custom_css .= "#skin_wrapper { color: $color }";
+		}
+
+
+		/**
+		 * Menu customization
+		 */
+		if( $color = $this->get_setting( 'menu_bg_color' ) )
+		{
+			$custom_css .= ".navbar.navbar-default { background-color: $color }";
+		}
+		if( $color = $this->get_setting( 'menu_link_color' ) )
+		{
+			$custom_css .= ".navbar.navbar-default .navbar-nav li a { color: $color }";
+		}
+		if( $color = $this->get_setting( 'active_link_bg_color' ) )
+		{
+			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { background-color: $color }";
+		}
+		if( $color = $this->get_setting( 'active_link_color' ) )
+		{
+			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { color: $color }";
+		}
+
 		
 		/**
 		 * Titles customization
@@ -321,6 +406,10 @@ class asevo_bootstrap_Skin extends Skin
 		 if( $color = $this->get_setting( 'title_links_color' ) )
 		 {
 			 $custom_css .= ".evo_post_title a { color: $color }";
+		 }
+		 if( $color = $this->get_setting( 'title_links_color_h' ) )
+		 {
+			 $custom_css .= ".evo_post_title a:hover { color: $color }";
 		 }
 		
 
