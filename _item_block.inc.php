@@ -104,7 +104,7 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	if( ! $Item->is_intro() )
 	{ // Don't display the following for intro posts
 	?>
-	<div class="small text-muted">
+	<div class="small post-info">
 	<?php
 		if( $Item->status != 'published' )
 		{
@@ -183,14 +183,13 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	}
 	else
 	{
-	// this will create a <section>
+		// this will create a <section>
 		// ---------------------- POST CONTENT INCLUDED HERE ----------------------
 		skin_include( '_item_content.inc.php', $params );
 		// Note: You can customize the default item content by copying the generic
 		// /skins/_item_content.inc.php file into the current skin folder.
 		// -------------------------- END OF POST CONTENT -------------------------
-	// this will end a </section>
-	}
+		// this will end a </section>
 	?>
 
 	<footer>
@@ -234,16 +233,30 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 		</nav>
 		<?php } ?>
 	</footer>
+	<?php } ?>
 
 	<?php
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------
 		skin_include( '_item_feedback.inc.php', array_merge( array(
 				'before_section_title' => '<div class="clearfix"></div><h3 class="evo_comment__list_title">',
 				'after_section_title'  => '</h3>',
+				'comment_start'         => '<article class="evo_comment panel">',
+				'comment_title_before'  => '<div class="widget-heading"><h4 class="evo_comment_title panel-title">',
+				'comment_title_after'   => '</h4></div><div class="widget-body">',
+				'comment_info_before'   => '<footer class="evo_comment_footer clear"><small>',
+				'disp_comment_form'     => false,
 			), $params ) );
 		// Note: You can customize the default item feedback by copying the generic
 		// /skins/_item_feedback.inc.php file into the current skin folder.
 		// ---------------------- END OF FEEDBACK (COMMENTS/TRACKBACKS) ---------------------
+	
+		if( $disp == 'single' || $disp == 'page' ) {	
+		skin_include( '_item_comment_form.inc.php', array_merge( array(
+				'form_title_start'     => '<div class="comment-form '.( $Session->get('core.preview_Comment') ? 'panel-danger' : 'panel-default' ).'">'
+																.'<div class="form-heading"><h4 class="panel-title">',
+				'form_title_end'       => '</h4></div><div class="form-body panel">',
+		), $params ) );
+		}
 	?>
 
 	<?php
@@ -260,8 +273,10 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	{	// We are running at least b2evo 6.7, so we can include this file:
 		// ------------------ META COMMENTS INCLUDED HERE ------------------
 		skin_include( '_item_meta_comments.inc.php', array(
-				'comment_start'         => '<article class="evo_comment evo_comment__meta panel panel-default">',
+				'comment_start'         => '<article class="evo_comment evo_comment__meta panel">',
 				'comment_end'           => '</article>',
+				'comment_title_before'  => '<div class="comment-heading"><h4 class="evo_comment_title panel-title">',
+				'comment_title_after'   => '</h4></div><div class="comment-body">',
 			) );
 		// ---------------------- END OF META COMMENTS ---------------------
 	}

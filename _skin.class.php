@@ -131,6 +131,36 @@ class asevo_bootstrap_Skin extends Skin
 						'defaultvalue' => '#333333',
 						'type' => 'color',
 					),
+					'post_info_color' => array(
+						'label' => T_('Post info color'),
+						'note' => T_('Set the post info color.') . T_('Default value is') . ': <code>#777777</code>.',
+						'defaultvalue' => '#777777',
+						'type' => 'color',
+					),
+					'links_color' => array(
+						'label' => T_('Content links color'),
+						'note' => T_('Set the links color.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'defaultvalue' => '#3E4651',
+						'type' => 'color',
+					),
+					'sidebar_links_color' => array(
+						'label' => T_('Sidebar links color'),
+						'note' => T_('Set the sidebar links color.') . T_('Default value is') . ': <code>#888888</code>.',
+						'defaultvalue' => '#888888',
+						'type' => 'color',
+					),
+					'sidebar_titles_color' => array(
+						'label' => T_('Sidebar widget titles color'),
+						'note' => T_('Set the color of sidebar widget titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+						'defaultvalue' => '#e63e41',
+						'type' => 'color',
+					),
+					'borders_color' => array(
+						'label' => T_('Borders color'),
+						'note' => T_('Set the borders color. Note: this color is also used for pager buttons color and meta comments button.') . T_('Default value is') . ': <code>#eeeeee</code>.',
+						'defaultvalue' => '#eeeeee',
+						'type' => 'color',
+					),
 					'max_image_height' => array(
 						'label' => T_('Max image height'),
 						'note' => 'px. ' . T_('Set maximum height for post images.'),
@@ -145,7 +175,7 @@ class asevo_bootstrap_Skin extends Skin
 				
 				'section_menu_start' => array(
 					'layout' => 'begin_fieldset',
-					'label'  => T_('Layout Settings')
+					'label'  => T_('Menu Settings')
 				),
 					'menu_bg_color' => array(
 						'label' => T_('Menu background color'),
@@ -155,8 +185,8 @@ class asevo_bootstrap_Skin extends Skin
 					),
 					'menu_link_color' => array(
 						'label' => T_('Menu links color'),
-						'note' => T_('Set the color of the menu links.') . T_('Default value is') . ': <code>#cccccc</code>.',
-						'defaultvalue' => '#cccccc',
+						'note' => T_('Set the color of the menu links.') . T_('Default value is') . ': <code>#eeeeee</code>.',
+						'defaultvalue' => '#eeeeee',
 						'type' => 'color',
 					),
 					'active_link_bg_color' => array(
@@ -178,7 +208,7 @@ class asevo_bootstrap_Skin extends Skin
 				
 				'section_title_start' => array(
 					'layout' => 'begin_fieldset',
-					'label'  => T_('Layout Settings')
+					'label'  => T_('Post Titles Settings')
 				),
 					'title_links_color' => array(
 						'label' => T_('Titles color'),
@@ -188,8 +218,8 @@ class asevo_bootstrap_Skin extends Skin
 					),
 					'title_links_color_h' => array(
 						'label' => T_('Titles hover color'),
-						'note' => T_('Set color for hovering post titles.') . T_('Default value is') . ': <code>#878B91</code>.',
-						'defaultvalue' => '#878B91',
+						'note' => T_('Set color for hovering post titles.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'defaultvalue' => '#3E4651',
 						'type' => 'color',
 					),
 					'titles_bold' => array(
@@ -371,11 +401,34 @@ class asevo_bootstrap_Skin extends Skin
 		 */
 		if( $color = $this->get_setting( 'background_color' ) )
 		{
-			$custom_css .= "#skin_wrapper { background-color: $color }";
+			$custom_css .= "#skin_wrapper { background-color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'content_color' ) )
 		{
-			$custom_css .= "#skin_wrapper { color: $color }";
+			$custom_css .= "#skin_wrapper, main .panel-default>.panel-heading, .panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a { color: $color }\n";
+		}
+		if( $color = $this->get_setting( 'post_info_color' ) )
+		{
+			$custom_css .= ".post-info, .post-info a, .edit_post_button, .evo_comment_footer small { color: $color }\n";
+		}
+		if( $color = $this->get_setting( 'links_color' ) )
+		{
+			$custom_css .= ".evo_container__header a, evo_container__header a:hover, .evo_container__page_top a, .evo_container__page_top a:hover, main a, main a:hover { color: $color }\n";
+		}
+		if( $color = $this->get_setting( 'sidebar_links_color' ) )
+		{
+			$custom_css .= ".evo_container__sidebar a, .evo_container__sidebar a:hover, .evo_container__sidebar2 a, .evo_container__sidebar2 a:hover { color: $color }\n";
+			$custom_css .= ".search_submit, .search_submit:hover { background-color: $color; border-color: $color }\n";
+		}
+		if( $color = $this->get_setting( 'sidebar_titles_color' ) )
+		{
+			$custom_css .= ".widget-heading-title { color: $color }\n";
+		}
+		if( $color = $this->get_setting( 'borders_color' ) )
+		{
+			$custom_css .= "div.compact_search_form input.search_field, .evo_comment, main > h2, .evo_widget, .evo_comment__meta_info a, .evo_comment__meta_info a:hover, .comment-form .form-body, .evo_widget.panel, .evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body, .form_textarea_input { border-color: $color }\n";
+			$custom_css .= ".titles-border { border-bottom: 1px solid $color }\n";
+			$custom_css .= ".evo_comment__meta_info a:hover, main .well, .post_tags a, .post_tags a:hover { background-color: $color }\n";
 		}
 
 
@@ -384,19 +437,19 @@ class asevo_bootstrap_Skin extends Skin
 		 */
 		if( $color = $this->get_setting( 'menu_bg_color' ) )
 		{
-			$custom_css .= ".navbar.navbar-default { background-color: $color }";
+			$custom_css .= ".navbar.navbar-default { background-color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'menu_link_color' ) )
 		{
-			$custom_css .= ".navbar.navbar-default .navbar-nav li a { color: $color }";
+			$custom_css .= ".navbar.navbar-default .navbar-nav li a { color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'active_link_bg_color' ) )
 		{
-			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { background-color: $color }";
+			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { background-color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'active_link_color' ) )
 		{
-			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { color: $color }";
+			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { color: $color }\n";
 		}
 
 		
@@ -405,7 +458,7 @@ class asevo_bootstrap_Skin extends Skin
 		 */
 		 if( $color = $this->get_setting( 'title_links_color' ) )
 		 {
-			 $custom_css .= ".evo_post_title a { color: $color }";
+			 $custom_css .= ".evo_post_title h2 a, .evo_post_title h1 { color: $color }\n";
 		 }
 		 if( $color = $this->get_setting( 'title_links_color_h' ) )
 		 {
@@ -501,12 +554,12 @@ class asevo_bootstrap_Skin extends Skin
 
 			case 'left_sidebar':
 				// Left Sidebar
-				return 'col-md-9 pull-right';
+				return 'col-md-8 pull-right';
 
 			case 'right_sidebar':
 				// Right Sidebar
 			default:
-				return 'col-md-9';
+				return 'col-md-8';
 		}
 	}
 }

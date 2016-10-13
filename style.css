@@ -615,33 +615,35 @@ div.widget_core_user_avatars.evo_layout_rwd img {
 .navbar {
   border-radius: 0;
   border: none;
+  min-height: 0;
 }
 .navbar-collapse {
   padding: 0;
 }
+body {
+  line-height: 1.6em;
+}
+main .well {
+  padding: 25px 25px 15px;
+  border: 0;
+}
 .sitewide_header {
   margin-bottom: 0 !important;
 }
-.evo_post h2 {
-  font-family: 'Open Sans', sans-serif;
-}
-.evo_post h2 a {
-  padding-bottom: 6px;
-}
-.evo_post h2 a:hover {
-  text-decoration: none;
-}
-.titles-bold h2 a {
+.titles-bold h2 a,
+.titles-bold h1 {
   font-weight: 800;
 }
-.titles-italic h2 a {
+.titles-italic h2 a,
+.titles-italic h1 {
   font-style: italic;
 }
-.titles-uppercase h2 a {
+.titles-uppercase h2 a,
+.titles-uppercase h1 {
   text-transform: uppercase;
 }
 .titles-border {
-  border-bottom: 1px solid #eee;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 @media (min-width: 1200px) {
   .container-narrow {
@@ -763,6 +765,14 @@ form.search .search_options .search_option label {
 div.compact_search_form input.search_field {
   width: 100%;
   margin: 0;
+  box-shadow: none;
+  border: 1px solid;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+div.compact_search_form .search_submit,
+div.compact_search_form .search_submit:hover {
+  margin-left: 0px;
 }
 div.extended_search_form {
   text-align: center;
@@ -785,9 +795,86 @@ label.control-label[for=post_title] {
 textarea.message_text {
   width: 95%;
 }
-.evo_comment_title a,
-.pull-right .evo_comment_type {
-  color: #337ab7;
+.evo_comment__list_title {
+  margin: 27px 0 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.evo_comment {
+  border: 1px solid;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.evo_comment .widget-heading h4 a:hover {
+  background-color: transparent;
+}
+.evo_comment .widget-heading {
+  margin-bottom: 15px;
+}
+.evo_content_block .evo_comment_avatar img {
+  border-radius: 4px;
+}
+.comment-form .form-heading h4 {
+  text-align: center;
+  margin-top: 3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.comment-form .form-body {
+  border: 1px solid;
+  padding: 15px;
+}
+.btn-toolbar .btn-toolbar-title {
+  margin-top: 5px;
+}
+.btn-toolbar .btn-group-xs > .btn,
+.btn-toolbar .btn-toolbar .btn-xs {
+  padding: 5px 10px;
+}
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-heading {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  margin-top: 3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body {
+  border: 1px solid;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body > p {
+  margin-bottom: 15px;
+}
+.evo_comment__meta .comment-heading {
+  margin-bottom: 15px;
+}
+.evo_post_comment_notification a {
+  padding: 0;
+  border: 0;
+}
+.evo_post_comment_notification a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+.evo_intro_post {
+  margin-bottom: 4em;
+}
+.evo_intro_post h2 {
+  font-family: 'Open Sans', sans-serif;
 }
 .evo_post {
   margin-bottom: 4em;
@@ -798,6 +885,24 @@ textarea.message_text {
 .evo_post .small.text-muted a,
 .evo_post .small.text-muted a .glyphicon {
   color: inherit;
+}
+.evo_post h2 {
+  font-family: 'Open Sans', sans-serif;
+}
+.evo_post h2 a {
+  padding-bottom: 6px;
+}
+.evo_post h2 a:hover {
+  text-decoration: none;
+}
+.evo_post .post-info {
+  margin: 4px 0 10px;
+}
+.evo_post section div a {
+  text-decoration: underline;
+}
+.evo_post_gallery {
+  text-align: center;
 }
 div.bSideItem {
   background: #F7F5FA;
@@ -908,8 +1013,74 @@ div.bSideItem h4 {
 .form_footer_notes {
   margin-top: 0;
 }
+.widget_core_coll_title h1 {
+  margin: 10px 0 0;
+}
+.widget_core_coll_title h1 a {
+  font-size: 24px;
+  font-weight: 800;
+}
+.widget_core_coll_avatar img {
+  border-radius: 4px;
+}
+.widget_core_coll_category_list ul li {
+  list-style-type: disc;
+}
+.widget_core_coll_category_list ul ul li {
+  list-style-type: circle;
+}
+.widget_core_coll_category_list ul ul ul li {
+  list-style-type: square;
+}
+.ufld_icon_links a {
+  color: #fff !important;
+}
+main > h2 {
+  margin-bottom: 2em;
+  border-bottom: 1px solid;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  padding-bottom: 5px;
+}
+.evo_container__sidebar,
+.evo_container__sidebar2 {
+  font-size: 13px;
+}
+.evo_container__sidebar ul,
+.evo_container__sidebar2 ul {
+  margin: 0 0 0 15px;
+}
+.evo_container__sidebar .evo_widget,
+.evo_container__sidebar2 .evo_widget {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.evo_container__sidebar .evo_widget a:hover,
+.evo_container__sidebar2 .evo_widget a:hover {
+  background-color: transparent;
+}
+.evo_container__sidebar .evo_widget .widget-heading-title,
+.evo_container__sidebar2 .evo_widget .widget-heading-title {
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .pagination {
   margin: 0;
+}
+.pager li a,
+.pager li span {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.pager li a:hover,
+.pager li span:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 div.action_messages,
 div.log_container {
@@ -919,20 +1090,26 @@ div.log_container {
   display: table;
   width: 100%;
 }
-.evo_post_title h2 {
+.evo_post_title h2,
+.evo_post_title h1 {
+  font-family: 'Open Sans', sans-serif;
   display: table-cell;
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
   padding-bottom: 6px;
 }
 .evo_post_title a.edit_post_button {
   display: table-cell;
   margin-bottom: -5px;
+  margin-left: 5px;
 }
 .evo_post_title .btn-group {
   display: table-cell;
   padding: 20px 0 10px 30px;
   vertical-align: middle;
+}
+.post_tags {
+  margin: 5px 0;
 }
 footer.row {
   margin-top: 20px;

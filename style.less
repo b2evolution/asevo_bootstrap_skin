@@ -19,35 +19,31 @@
 // -------------------------------------------------------
 
 // ----------------- Bootstrap overrides -----------------
-.nav {margin:0}.navbar{border-radius:0;border:none}.navbar-collapse{padding:0}
+.nav {margin:0}.navbar{border-radius:0;border:none;min-height: 0}.navbar-collapse{padding:0}
+body {line-height: 1.6em}
+main .well{padding:25px 25px 15px;border: 0;}
 
 .sitewide_header {
 	margin-bottom: 0 !important; // Will not override without !important
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:700,800");
-.evo_post {
-	h2 {
-		font-family: 'Open Sans', sans-serif;
-		a {
-			padding-bottom: 6px;
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
-}
-.titles-bold h2 a {
+
+.titles-bold h2 a,
+.titles-bold h1 {
 	font-weight: 800;
 }
-.titles-italic h2 a {
+.titles-italic h2 a,
+.titles-italic h1 {
 	font-style: italic;
 }
-.titles-uppercase h2 a {
+.titles-uppercase h2 a,
+.titles-uppercase h1 {
 	text-transform: uppercase;
 }
+// Color given through skin-class
 .titles-border {
-	border-bottom: 1px solid #eee;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 @media (min-width: 1200px) {
 	.container-narrow {
@@ -196,6 +192,12 @@ div.compact_search_form {
 	input.search_field {
 		width: 100%;
 		margin: 0;
+		box-shadow: none;
+		border: 1px solid;
+		transition: 0.2s ease;
+	}
+	.search_submit, .search_submit:hover {
+		margin-left: 0px;
 	}
 }
 div.extended_search_form {
@@ -228,11 +230,108 @@ textarea.message_text {
 	width: 95%;
 }
 
-// Links disp=comment
-.evo_comment_title a, .pull-right .evo_comment_type {
-	color: #337ab7;
+// Number of comments
+.evo_comment__list_title {
+		margin: 27px 0 0;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 14px;
+		padding-bottom: 5px;
 }
 
+// Comments disp=single & disp=page
+.evo_comment {
+	border: 1px solid;
+	padding: 15px;
+	margin-bottom: 20px;
+	//border-radius: 4px;
+
+	.widget-heading h4 a:hover {
+		background-color: transparent;
+	}
+
+	.widget-heading {
+		margin-bottom: 15px;
+	}
+}
+.evo_content_block .evo_comment_avatar img {
+	border-radius: 4px;
+}
+
+// Comment form
+.comment-form {
+	.form-heading h4 {
+		text-align: center;
+		margin-top: 3em;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 14px;
+		padding-bottom: 5px;
+	}
+	.form-body {
+		border: 1px solid;
+		padding: 15px;
+	}
+}
+
+// Comment editing buttons
+.btn-toolbar {
+	.btn-toolbar-title {
+		margin-top: 5px;
+	}
+	.btn-group-xs>.btn, .btn-toolbar .btn-xs {
+		padding: 5px 10px;
+	}
+}
+
+// Meta comments
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default {
+	box-shadow: none;
+	border: none;
+	padding: 0;
+	.panel-heading {
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		text-align: center;
+		margin-top: 3em;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 14px;
+		padding-bottom: 5px;
+	}
+	.panel-body {
+		border: 1px solid;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(0,0,0,.05);
+		> p {
+			margin-bottom: 15px;
+		}
+	}
+}
+.evo_comment__meta {
+	.comment-heading {
+		margin-bottom: 15px;
+	}
+}
+
+// Post comment notification button (below comment form)
+.evo_post_comment_notification a {
+	padding: 0;
+	border: 0;
+	&:hover {
+		background-color: transparent;
+		text-decoration: underline;
+	}
+}
+
+// Blog Posts Layout
+.evo_intro_post {
+	margin-bottom: 4em;
+	h2 {
+		font-family: 'Open Sans', sans-serif;
+	}
+}
 .evo_post {
 	margin-bottom: 4em;
 	.small.text-muted {
@@ -241,6 +340,26 @@ textarea.message_text {
 			color: inherit;
 		}
 	}
+	h2 {
+		font-family: 'Open Sans', sans-serif;
+		a {
+			padding-bottom: 6px;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	
+	.post-info {
+		margin: 4px 0 10px;
+	}
+	
+	section div a {
+		text-decoration: underline;
+	}
+}
+.evo_post_gallery {
+	text-align: center;
 }
 
 div.bSideItem {
@@ -353,9 +472,86 @@ div.bSideItem {
 	margin-top: 0;
 }
 
+// Widgets
+.widget_core_coll_title {
+	h1 {
+		margin: 10px 0 0;
+		a {
+			font-size: 24px;
+			font-weight: 800;
+		}
+	}
+}
+.widget_core_coll_avatar img {
+	border-radius: 4px;
+}
+.widget_core_coll_category_list ul {
+	li {
+		list-style-type: disc;
+	}
+	ul {
+		li {
+			list-style-type: circle;
+		}
+		ul li {
+			list-style-type: square;
+		}
+	}
+}
+.ufld_icon_links a {
+	color: #fff !important;
+}
+
+main > h2 {
+	margin-bottom: 2em;
+	border-bottom: 1px solid;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	padding-bottom: 5px;
+}
+
+// Sidebar
+.evo_container__sidebar, .evo_container__sidebar2 {
+	font-size: 13px;
+	ul {
+		margin: 0 0 0 15px;
+	}
+	.evo_widget {
+		//border: 1px solid rgba(0,0,0,0.05);
+		padding: 15px;
+		margin-bottom: 20px;
+		//border-radius: 4px;
+		
+		a:hover {
+			background-color: transparent;
+		}
+		
+		.widget-heading-title {
+			margin-top: 0;
+			font-size: 14px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+	}
+}
+
 // Pagination
 .pagination {
 	margin: 0;
+}
+
+// Pager
+.pager li {
+	a, span {
+		border-radius: 4px;
+		background-color: rgba(0,0,0,0.05);
+		border: none;
+		transition: 0.2s ease;
+		&:hover {
+			background-color: rgba(0,0,0,0.10);
+		}
+	}
 }
 
 // Messages
@@ -367,21 +563,28 @@ div.action_messages, div.log_container {
 .evo_post_title {
 	display: table;
 	width: 100%;
-	h2 {
+	h2, h1 {
+		font-family: 'Open Sans', sans-serif;
 		display: table-cell;
-		font-size: 20px;
+		font-size: 18px;
 		margin: 0;
 		padding-bottom: 6px;
 	}
 	a.edit_post_button {
 		display: table-cell;
 		margin-bottom: -5px;
+		margin-left: 5px;
 	}
 	.btn-group {
 		display: table-cell;
 		padding: 20px 0 10px 30px;
 		vertical-align: middle;
 	}
+}
+
+// Post tags
+.post_tags {
+	margin: 5px 0;
 }
 
 // This skin needs this for disp=posts to separate from lower pagination
