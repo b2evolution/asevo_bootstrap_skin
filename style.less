@@ -29,6 +29,13 @@ main .well{padding:25px 25px 15px;border: 0;}
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:700,800");
 
+a img {
+	transition: 0.25s ease-out;
+	&:hover {
+		opacity: 0.9;
+	}
+}
+
 .titles-bold h2 a,
 .titles-bold h1 {
 	font-weight: 800;
@@ -237,6 +244,7 @@ textarea.message_text {
 		font-weight: 700;
 		font-size: 14px;
 		padding-bottom: 5px;
+		font-family: 'Open Sans', sans-serif;
 }
 
 // Comments disp=single & disp=page
@@ -267,10 +275,19 @@ textarea.message_text {
 		font-weight: 700;
 		font-size: 14px;
 		padding-bottom: 5px;
+		font-family: 'Open Sans', sans-serif;
 	}
 	.form-body {
 		border: 1px solid;
 		padding: 15px;
+	}
+}
+
+// Preview and Submit buttons
+.preview, .submit {
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	&:hover {
+		box-shadow: 0 1px 1px rgba(0,0,0,.15);
 	}
 }
 
@@ -284,8 +301,8 @@ textarea.message_text {
 	}
 }
 
-// Meta comments
-.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default {
+// Removing default panel style from meta comments, disp=user panels, login form, lostpassword form
+.evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default, .profile_column_right .panel.panel-default, .evo_panel__register .panel, .evo_panel__login .panel, .evo_panel__lostpass > .panel.skin-form {
 	box-shadow: none;
 	border: none;
 	padding: 0;
@@ -299,6 +316,7 @@ textarea.message_text {
 		font-weight: 700;
 		font-size: 14px;
 		padding-bottom: 5px;
+		font-family: 'Open Sans', sans-serif;
 	}
 	.panel-body {
 		border: 1px solid;
@@ -313,6 +331,11 @@ textarea.message_text {
 	.comment-heading {
 		margin-bottom: 15px;
 	}
+}
+
+// disp=user
+.profile_column_right .fieldset_wrapper .panel.panel-default .panel-heading {
+	margin-top: 0;
 }
 
 // Post comment notification button (below comment form)
@@ -340,7 +363,7 @@ textarea.message_text {
 			color: inherit;
 		}
 	}
-	h2 {
+	h2, h1 {
 		font-family: 'Open Sans', sans-serif;
 		a {
 			padding-bottom: 6px;
@@ -415,6 +438,10 @@ div.bSideItem {
 	#ffield_x label {
 		display: none;
 	}
+	#lostpass_form .panel-body {
+		border: none;
+		box-shadow: none;
+	}
 }
 .evo_panel__activation {
 	max-width: 530px;
@@ -479,6 +506,7 @@ div.bSideItem {
 		a {
 			font-size: 24px;
 			font-weight: 800;
+			font-family: 'Open Sans', sans-serif;
 		}
 	}
 }
@@ -500,8 +528,24 @@ div.bSideItem {
 }
 .ufld_icon_links a {
 	color: #fff !important;
+	border-radius: 4px;
+}
+.widget_plugin_evo_Calr {
+	.widget-body {
+		table.bCalendarTable {
+			margin: 0;
+			width: 100%;
+			max-width: 290px;
+			
+			#bCalendarToday {
+				background-color: transparent;
+				font-weight: 700;
+			}
+		}
+	}
 }
 
+// Main content
 main > h2 {
 	margin-bottom: 2em;
 	border-bottom: 1px solid;
@@ -509,6 +553,16 @@ main > h2 {
 	font-size: 20px;
 	font-weight: 800;
 	padding-bottom: 5px;
+}
+main .evo_widget h2, .error_403 h2, .error_404 h2, .disp_sitemap main > h3 {
+	margin-top: 0;
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+}
+div.error_403, div.error_404, div.error_additional_content {
+	margin: 0 0 2em;
 }
 
 // Sidebar
@@ -532,13 +586,23 @@ main > h2 {
 			font-size: 14px;
 			font-weight: 700;
 			text-transform: uppercase;
+			font-family: 'Open Sans', sans-serif;
 		}
 	}
 }
 
 // Pagination
-.pagination {
-	margin: 0;
+nav.site_pagination {
+	a {
+		border: 1px solid;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(0,0,0,.05);
+		padding: 10px 20px;
+		transition: 0.2s ease;
+		&:hover, &:link, &:active {
+			text-decoration: none;
+		}
+	}
 }
 
 // Pager
@@ -570,6 +634,9 @@ div.action_messages, div.log_container {
 		margin: 0;
 		padding-bottom: 6px;
 	}
+	h2 a, h1 a {
+		transition: 0.25s ease-out;
+	}
 	a.edit_post_button {
 		display: table-cell;
 		margin-bottom: -5px;
@@ -590,4 +657,50 @@ div.action_messages, div.log_container {
 // This skin needs this for disp=posts to separate from lower pagination
 footer.row {
 	margin-top: 20px;
+}
+
+// Disp=sitemap
+.disp_sitemap main {
+	.evo_widget {
+		margin: 0 0 2em;
+	}
+	ul {
+		margin-left: 15px;
+	}
+}
+
+// Disp=register
+.evo_panel__register .search, input.btn-success, a.btn-primary, input.btn-primary {
+	padding: 6px 12px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	border-radius: 4px;
+	transition: 0.25s ease-out;
+}
+.evo_panel__register .search, input.btn-success, a.btn-primary {
+	font-size: 100%;
+}
+.evo_form__login_links {
+	text-align: center;
+}
+
+// Preview button
+.SaveButton.btn-info, .SaveButton.btn-primary, input.btn-success, a.btn-primary, input.btn-primary {
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	transition: 0.25s ease-out;
+	&:hover {
+		box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	}
+}
+
+// Popup button fix (preventing style change from the back-office of the skin)
+.bubbletip_user__buttons a.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+	font-size: 12px;
+	&:hover {
+		color: #fff;
+		background-color: #286090;
+		border-color: #204d74;
+	}
 }

@@ -31,17 +31,26 @@ while( mainlist_get_item() )
 } // ---------------------------------- END OF POSTS ------------------------------------
 
 // -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
+// mainlist_page_links( array(
+		// 'block_start'           => '<div class="center"><ul class="site_pagination">',
+		// 'block_end'             => '</ul></div>',
+		// 'page_current_template' => '<span>$page_num$</span>',
+		// 'page_item_before'      => '<li>',
+		// 'page_item_after'       => '</li>',
+		// 'page_item_current_before' => '<li class="active">',
+		// 'page_item_current_after'  => '</li>',
+		// 'prev_text'             => '<i class="fa fa-angle-double-left"></i>',
+		// 'next_text'             => '<i class="fa fa-angle-double-right"></i>',
+	// ) );
+		// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
 mainlist_page_links( array(
-		'block_start'           => '<div class="center"><ul class="pagination">',
-		'block_end'             => '</ul></div>',
-		'page_current_template' => '<span>$page_num$</span>',
-		'page_item_before'      => '<li>',
-		'page_item_after'       => '</li>',
-		'page_item_current_before' => '<li class="active">',
-		'page_item_current_after'  => '</li>',
-		'prev_text'             => '<i class="fa fa-angle-double-left"></i>',
-		'next_text'             => '<i class="fa fa-angle-double-right"></i>',
+		'block_start' => '<nav class="site_pagination center">',
+		'block_end' => '</nav>',
+		'links_format' => '$prev$ $next$',
+		'prev_text' => '<i class="fa fa-angle-double-left"></i> ' . T_('Previous'),
+		'next_text' => T_('Next') . ' <i class="fa fa-angle-double-right"></i>',
 	) );
+		// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
 // ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
 
 ?>

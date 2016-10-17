@@ -131,7 +131,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 
 <div class="row">
 
-	<div class="<?php echo $Skin->get_column_class(); ?>">
+	<div class="<?php if( !in_array( $disp, array( 'user' ) ) ) { echo $Skin->get_column_class(); } else { echo 'col-lg-12'; } ?>">
 
 		<main><!-- This is were a link like "Jump to main content" would land -->
 
@@ -214,7 +214,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 					),
 					// Pagination
 					'pagination' => array(
-						'block_start'           => '<div class="center"><ul class="pagination">',
+						'block_start'           => '<div class="center"><ul class="site_pagination">',
 						'block_end'             => '</ul></div>',
 						'page_current_template' => '<span>$page_num$</span>',
 						'page_item_before'      => '<li>',
@@ -280,7 +280,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 
 
 	<?php
-	if( $Skin->is_visible_sidebar() )
+	if( $Skin->is_visible_sidebar() && !in_array( $disp, array( 'user' ) ) )
 	{ // Display sidebar:
 	?>
 	<aside class="col-md-4<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' pull-left' : '' ); ?>">

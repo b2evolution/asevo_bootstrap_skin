@@ -21,7 +21,7 @@ class asevo_bootstrap_Skin extends Skin
 	 * Skin version
 	 * @var string
 	 */
-	var $version = '1.0.0';
+	var $version = '0.1';
 
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
@@ -89,6 +89,10 @@ class asevo_bootstrap_Skin extends Skin
 	 */
 	function get_param_definitions( $params )
 	{
+				
+		// Load to use function get_available_thumb_sizes()
+		load_funcs( 'files/model/_image.funcs.php' );
+
 		$r = array_merge( array(
 				'section_layout_start' => array(
 					'layout' => 'begin_fieldset',
@@ -149,9 +153,9 @@ class asevo_bootstrap_Skin extends Skin
 						'defaultvalue' => '#888888',
 						'type' => 'color',
 					),
-					'sidebar_titles_color' => array(
-						'label' => T_('Sidebar widget titles color'),
-						'note' => T_('Set the color of sidebar widget titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+					'widget_titles_color' => array(
+						'label' => T_('Widget titles color'),
+						'note' => T_('Set the color of widget titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
 						'defaultvalue' => '#e63e41',
 						'type' => 'color',
 					),
@@ -253,6 +257,22 @@ class asevo_bootstrap_Skin extends Skin
 						'type' => 'color',
 					),
 				'section_title_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'section_mediaidx_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Colorbox Image Zoom')
+				),
+					'mediaidx_thumb_size' => array(
+						'label'        => T_('Thumbnail Size for Media Index'),
+						'note'         => T_('Select thumbnail size for images on Media index page') . ' (disp=mediaidx)',
+						'defaultvalue' => 'crop-192x192',
+						'options'      => get_available_thumb_sizes(),
+						'type'         => 'select',
+					),
+				'section_mediaidx_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -401,7 +421,8 @@ class asevo_bootstrap_Skin extends Skin
 		 */
 		if( $color = $this->get_setting( 'background_color' ) )
 		{
-			$custom_css .= "#skin_wrapper { background-color: $color }\n";
+			$custom_css .= "#skin_wrapper, .preview, .preview:hover, .SaveButton.btn-info, a.btn-primary { background-color: $color }\n";
+			$custom_css .= "nav.site_pagination a:hover, .SaveButton.btn-primary, a.btn-primary:hover, input.btn-primary { color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'content_color' ) )
 		{
@@ -413,22 +434,23 @@ class asevo_bootstrap_Skin extends Skin
 		}
 		if( $color = $this->get_setting( 'links_color' ) )
 		{
-			$custom_css .= ".evo_container__header a, evo_container__header a:hover, .evo_container__page_top a, .evo_container__page_top a:hover, main a, main a:hover { color: $color }\n";
+			$custom_css .= ".evo_container__header a, evo_container__header a:hover, .evo_container__page_top a, .evo_container__page_top a:hover, main a, main a:hover, .preview, .preview:hover, .evo_post_pagination a, .SaveButton.btn-info, a.btn-primary { color: $color }\n";
+			$custom_css .= "nav.site_pagination a:hover, .search_submit, .search_submit:hover, .submit, .submit:hover, .evo_panel__register .panel .panel-body .search, .SaveButton.btn-primary, input.btn-success, input.btn-success:hover, a.btn-primary:hover, input.btn-primary, input.btn-primary:hover { background-color: $color; border-color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'sidebar_links_color' ) )
 		{
 			$custom_css .= ".evo_container__sidebar a, .evo_container__sidebar a:hover, .evo_container__sidebar2 a, .evo_container__sidebar2 a:hover { color: $color }\n";
-			$custom_css .= ".search_submit, .search_submit:hover { background-color: $color; border-color: $color }\n";
 		}
-		if( $color = $this->get_setting( 'sidebar_titles_color' ) )
+		if( $color = $this->get_setting( 'widget_titles_color' ) )
 		{
-			$custom_css .= ".widget-heading-title { color: $color }\n";
+			$custom_css .= ".widget-heading-title, main .evo_widget h2, .error_404 h2, .error_403 h2, .disp_sitemap main > h3, #bCalendarToday { color: $color }\n";
+			$custom_css .= "#bCalendarToday { border-color: $color; color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'borders_color' ) )
 		{
-			$custom_css .= "div.compact_search_form input.search_field, .evo_comment, main > h2, .evo_widget, .evo_comment__meta_info a, .evo_comment__meta_info a:hover, .comment-form .form-body, .evo_widget.panel, .evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body, .form_textarea_input { border-color: $color }\n";
+			$custom_css .= "div.compact_search_form input.search_field, .evo_comment, main > h2, .evo_widget, .evo_comment__meta_info a, .evo_comment__meta_info a:hover, .comment-form .form-body, .evo_widget.panel, .evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body, .form_textarea_input, nav.site_pagination a, .preview, .preview:hover, .profile_column_right .panel.panel-default .panel-body, .evo_panel__register .panel .panel-body, .SaveButton.btn-info, .evo_panel__login .panel.panel-default .panel-body, a.btn-primary, .evo_panel__lostpass > .panel.skin-form .panel-body { border-color: $color }\n";
 			$custom_css .= ".titles-border { border-bottom: 1px solid $color }\n";
-			$custom_css .= ".evo_comment__meta_info a:hover, main .well, .post_tags a, .post_tags a:hover { background-color: $color }\n";
+			$custom_css .= ".evo_comment__meta_info a:hover, main .well, .post_tags a, .post_tags a:hover, .ufld_icon_links a { background-color: $color }\n";
 		}
 
 
@@ -458,7 +480,7 @@ class asevo_bootstrap_Skin extends Skin
 		 */
 		 if( $color = $this->get_setting( 'title_links_color' ) )
 		 {
-			 $custom_css .= ".evo_post_title h2 a, .evo_post_title h1 { color: $color }\n";
+			 $custom_css .= ".evo_post_title h2 a, .evo_post_title h1, .evo_post_title h1 a { color: $color }\n";
 		 }
 		 if( $color = $this->get_setting( 'title_links_color_h' ) )
 		 {
