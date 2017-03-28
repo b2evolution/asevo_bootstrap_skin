@@ -273,7 +273,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 <footer class="row">
 
 	<!-- =================================== START OF FOOTER =================================== -->
-	<div class="col-md-12 center">
+	<div class="col-md-12">
 
 		<?php
 		if( $Skin->is_visible_container( 'footer' ) )

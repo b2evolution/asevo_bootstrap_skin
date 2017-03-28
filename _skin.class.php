@@ -59,6 +59,34 @@ class asevo_bootstrap_Skin extends Skin
 	{
 		return 6;
 	}
+	
+	
+	/**
+	 * Get supported collection kinds.
+	 *
+	 * This should be overloaded in skins.
+	 *
+	 * For each kind the answer could be:
+	 * - 'yes' : this skin does support that collection kind (the result will be was is expected)
+	 * - 'partial' : this skin is not a primary choice for this collection kind (but still produces an output that makes sense)
+	 * - 'maybe' : this skin has not been tested with this collection kind
+	 * - 'no' : this skin does not support that collection kind (the result would not be what is expected)
+	 * There may be more possible answers in the future...
+	 */
+	public function get_supported_coll_kinds()
+	{
+		$supported_kinds = array(
+				'main' => 'partial',
+				'std' => 'yes',		// Blog
+				'photo' => 'no',
+				'forum' => 'no',
+				'manual' => 'no',
+				'group' => 'maybe',  // Tracker
+				// Any kind that is not listed should be considered as "maybe" supported
+			);
+
+		return $supported_kinds;
+	}
 
 
 	/**
@@ -69,14 +97,6 @@ class asevo_bootstrap_Skin extends Skin
 	function get_css_framework()
 	{
 		return 'bootstrap';
-	}
-	
-	
-	function disabled_fields($param)
-	{
-		if( $this->get_setting( $param ) == 0 ) {
-			echo '<style>#edit_plugin_11_set_titles_border_color:hover{cursor:default}</style>';
-		}
 	}
 
 
@@ -125,43 +145,43 @@ class asevo_bootstrap_Skin extends Skin
 					),
 					'background_color' => array(
 						'label' => T_('Background color'),
-						'note' => T_('Set the skin background color.') . T_('Default value is') . ': <code>#ffffff</code>.',
+						'note' => T_('Set the skin background color.') . ' ' . T_('Default value is') . ': <code>#ffffff</code>.',
 						'defaultvalue' => '#ffffff',
 						'type' => 'color',
 					),
 					'content_color' => array(
 						'label' => T_('Content color'),
-						'note' => T_('Set the content color.') . T_('Default value is') . ': <code>#333333</code>.',
+						'note' => T_('Set the content color.') . ' ' . T_('Default value is') . ': <code>#333333</code>.',
 						'defaultvalue' => '#333333',
 						'type' => 'color',
 					),
 					'post_info_color' => array(
 						'label' => T_('Post info color'),
-						'note' => T_('Set the post info color.') . T_('Default value is') . ': <code>#777777</code>.',
+						'note' => T_('Set the post info color.') . ' ' . T_('Default value is') . ': <code>#777777</code>.',
 						'defaultvalue' => '#777777',
 						'type' => 'color',
 					),
 					'links_color' => array(
 						'label' => T_('Content links color'),
-						'note' => T_('Set the links color.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'note' => T_('Set the links color.') . ' ' . T_('Default value is') . ': <code>#3E4651</code>.',
 						'defaultvalue' => '#3E4651',
 						'type' => 'color',
 					),
 					'sidebar_links_color' => array(
 						'label' => T_('Sidebar links color'),
-						'note' => T_('Set the sidebar links color.') . T_('Default value is') . ': <code>#888888</code>.',
+						'note' => T_('Set the sidebar links color.') . ' ' . T_('Default value is') . ': <code>#888888</code>.',
 						'defaultvalue' => '#888888',
 						'type' => 'color',
 					),
 					'widget_titles_color' => array(
 						'label' => T_('Widget titles color'),
-						'note' => T_('Set the color of widget titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+						'note' => T_('Set the color of widget titles.') . ' ' . T_('Default value is') . ': <code>#e63e41</code>.',
 						'defaultvalue' => '#e63e41',
 						'type' => 'color',
 					),
 					'borders_color' => array(
 						'label' => T_('Borders color'),
-						'note' => T_('Set the borders color. Note: this color is also used for pager buttons color and meta comments button.') . T_('Default value is') . ': <code>#eeeeee</code>.',
+						'note' => T_('Set the borders color. Note: this color is also used for pager buttons color and meta comments button.') . ' ' . T_('Default value is') . ': <code>#eeeeee</code>.',
 						'defaultvalue' => '#eeeeee',
 						'type' => 'color',
 					),
@@ -183,25 +203,25 @@ class asevo_bootstrap_Skin extends Skin
 				),
 					'menu_bg_color' => array(
 						'label' => T_('Menu background color'),
-						'note' => T_('Set the background color of the menu section.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'note' => T_('Set the background color of the menu section.') . ' ' . T_('Default value is') . ': <code>#3E4651</code>.',
 						'defaultvalue' => '#3E4651',
 						'type' => 'color',
 					),
 					'menu_link_color' => array(
 						'label' => T_('Menu links color'),
-						'note' => T_('Set the color of the menu links.') . T_('Default value is') . ': <code>#eeeeee</code>.',
+						'note' => T_('Set the color of the menu links.') . ' ' . T_('Default value is') . ': <code>#eeeeee</code>.',
 						'defaultvalue' => '#eeeeee',
 						'type' => 'color',
 					),
 					'active_link_bg_color' => array(
 						'label' => T_('Active link background color'),
-						'note' => T_('Set the background color of the active menu link.') . T_('Default value is') . ': <code>#e7e7e7</code>.',
+						'note' => T_('Set the background color of the active menu link.') . ' ' . T_('Default value is') . ': <code>#e7e7e7</code>.',
 						'defaultvalue' => '#e7e7e7',
 						'type' => 'color',
 					),
 					'active_link_color' => array(
 						'label' => T_('Active link color'),
-						'note' => T_('Set the color of the active menu link.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'note' => T_('Set the color of the active menu link.') . ' ' . T_('Default value is') . ': <code>#3E4651</code>.',
 						'defaultvalue' => '#3E4651',
 						'type' => 'color',
 					),
@@ -216,13 +236,13 @@ class asevo_bootstrap_Skin extends Skin
 				),
 					'title_links_color' => array(
 						'label' => T_('Titles color'),
-						'note' => T_('Set color for post titles.') . T_('Default value is') . ': <code>#e63e41</code>.',
+						'note' => T_('Set color for post titles.') . ' ' . T_('Default value is') . ': <code>#e63e41</code>.',
 						'defaultvalue' => '#e63e41',
 						'type' => 'color',
 					),
 					'title_links_color_h' => array(
 						'label' => T_('Titles hover color'),
-						'note' => T_('Set color for hovering post titles.') . T_('Default value is') . ': <code>#3E4651</code>.',
+						'note' => T_('Set color for hovering post titles.') . ' ' . T_('Default value is') . ': <code>#3E4651</code>.',
 						'defaultvalue' => '#3E4651',
 						'type' => 'color',
 					),
@@ -252,7 +272,7 @@ class asevo_bootstrap_Skin extends Skin
 					),
 					'titles_border_color' => array(
 						'label' => T_('Titles border color'),
-						'note' => T_('Set color for the border below titles.') . T_('Default value is') . ': <code>#3e4651</code>.',
+						'note' => T_('Set color for the border below titles.') . ' ' . T_('Default value is') . ': <code>#3e4651</code>.',
 						'defaultvalue' => '#3e4651',
 						'type' => 'color',
 					),
@@ -434,8 +454,8 @@ class asevo_bootstrap_Skin extends Skin
 		}
 		if( $color = $this->get_setting( 'links_color' ) )
 		{
-			$custom_css .= ".evo_container__header a, evo_container__header a:hover, .evo_container__page_top a, .evo_container__page_top a:hover, main a, main a:hover, .preview, .preview:hover, .evo_post_pagination a, .SaveButton.btn-info, a.btn-primary { color: $color }\n";
-			$custom_css .= "nav.site_pagination a:hover, .search_submit, .search_submit:hover, .submit, .submit:hover, .evo_panel__register .panel .panel-body .search, .SaveButton.btn-primary, input.btn-success, input.btn-success:hover, a.btn-primary:hover, input.btn-primary, input.btn-primary:hover { background-color: $color; border-color: $color }\n";
+			$custom_css .= "footer.row a, footer.row a:hover, .evo_container__footer a, .evo_container__page_top a, .evo_container__page_top a:hover, main a, main a:hover, .preview, .preview:hover, .evo_post_pagination a, .SaveButton.btn-info, a.btn-primary, .widget-heading .evo_comment_title a, .widget-heading .evo_comment_title a:hover, .pagination>li>a, .pagination>li>span, .pagination>li>a:hover, .pagination>li>span:hover { color: $color }\n";
+			$custom_css .= "nav.site_pagination a:hover, .search_submit, .search_submit:hover, .submit, .submit:hover, .evo_panel__register .panel .panel-body .search, .SaveButton.btn-primary, input.btn-success, input.btn-success:hover, a.btn-primary:hover, input.btn-primary, input.btn-primary:hover, .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover { background-color: $color; border-color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'sidebar_links_color' ) )
 		{
@@ -443,13 +463,14 @@ class asevo_bootstrap_Skin extends Skin
 		}
 		if( $color = $this->get_setting( 'widget_titles_color' ) )
 		{
-			$custom_css .= ".widget-heading-title, main .evo_widget h2, .error_404 h2, .error_403 h2, .disp_sitemap main > h3, #bCalendarToday { color: $color }\n";
+			$custom_css .= "h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a, .widget-heading a, .widget-heading a:hover, .evo_container__header a, evo_container__header a:hover, .widget-heading-title, main .evo_widget h2, .error_404 h2, .error_403 h2, .disp_sitemap main > h3, #bCalendarToday { color: $color }\n";
 			$custom_css .= "#bCalendarToday { border-color: $color; color: $color }\n";
 		}
 		if( $color = $this->get_setting( 'borders_color' ) )
 		{
-			$custom_css .= "div.compact_search_form input.search_field, .evo_comment, main > h2, .evo_widget, .evo_comment__meta_info a, .evo_comment__meta_info a:hover, .comment-form .form-body, .evo_widget.panel, .evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body, .form_textarea_input, nav.site_pagination a, .preview, .preview:hover, .profile_column_right .panel.panel-default .panel-body, .evo_panel__register .panel .panel-body, .SaveButton.btn-info, .evo_panel__login .panel.panel-default .panel-body, a.btn-primary, .evo_panel__lostpass > .panel.skin-form .panel-body { border-color: $color }\n";
+			$custom_css .= "div.compact_search_form input.search_field, .evo_comment, main > h2, .evo_comment__meta_info a, .evo_comment__meta_info a:hover, .comment-form .form-body, .evo_post > .form-horizontal > .fieldset_wrapper > fieldset.fieldset .panel.panel-default .panel-body, .form_textarea_input, nav.site_pagination a, .preview, .preview:hover, .profile_column_right .panel.panel-default .panel-body, .evo_panel__register .panel .panel-body, .SaveButton.btn-info, .evo_panel__login .panel.panel-default .panel-body, a.btn-primary, .evo_panel__lostpass > .panel.skin-form .panel-body, .results, .results .panel-heading, .results .panel-footer, .pagination>li>a, .pagination>li>span { border-color: $color }\n";
 			$custom_css .= ".titles-border { border-bottom: 1px solid $color }\n";
+			$custom_css .= ".evo_widget .widget-heading { border-bottom: 2px solid $color }\n";
 			$custom_css .= ".evo_comment__meta_info a:hover, main .well, .post_tags a, .post_tags a:hover, .ufld_icon_links a { background-color: $color }\n";
 		}
 

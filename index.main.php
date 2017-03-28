@@ -200,6 +200,8 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 		?>
 
 		<?php
+			$pagination_Class = 'pagination';
+			if( $disp == 'posts' ) { $pagination_Class = 'site_pagination'; }
 			// -------------- MAIN CONTENT TEMPLATE INCLUDED HERE (Based on $disp) --------------
 			skin_include( '$disp$', array(
 					'author_link_text' => 'auto',
@@ -214,7 +216,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 					),
 					// Pagination
 					'pagination' => array(
-						'block_start'           => '<div class="center"><ul class="site_pagination">',
+						'block_start'           => '<div class="center"><ul class="' . $pagination_Class . '">',
 						'block_end'             => '</ul></div>',
 						'page_current_template' => '<span>$page_num$</span>',
 						'page_item_before'      => '<li>',
@@ -369,7 +371,7 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 <footer class="row">
 
 	<!-- =================================== START OF FOOTER =================================== -->
-	<div class="col-md-12 center">
+	<div class="col-md-12">
 
 		<div class="evo_container evo_container__footer">
 		<?php

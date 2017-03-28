@@ -264,7 +264,7 @@ if( $Skin->is_visible_container( 'menu' ) )
 <footer class="row">
 
 	<!-- =================================== START OF FOOTER =================================== -->
-	<div class="col-md-12 center">
+	<div class="col-md-12">
 
 		<?php
 		if( $Skin->is_visible_container( 'footer' ) )
