@@ -706,3 +706,6 @@ input.btn-primary:hover {
   background-color: #286090;
   border-color: #204d74;
 }
+.disp_catdir main .widget_core_coll_category_list ul {
+  margin: 0 0 10px 25px;
+}
