@@ -59,17 +59,16 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
         <span class="icon-bar"></span>
       </button>
     </div>
-	
-	<div class="<?php echo $container_classes; ?>">
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+
 		<?php
 			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
 			// Note: this container is designed to be a single <ul> list
-			skin_container( NT_('Menu'), array(
+			widget_container( 'menu', array(
 					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start'     => '<div class="'.$container_classes.'"><div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><ul class="nav navbar-nav evo_container $wico_class$">',
+					'container_end'       => '</ul></div></div>',
 					'block_start'         => '',
 					'block_end'           => '',
 					'block_display_title' => false,
@@ -84,22 +83,20 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 				) );
 			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 		?>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.navbar-collapse -->
 </nav>
 
 <div class="<?php echo $container_classes; ?>">
 
 <header class="row">
 
-	<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
-		<div class="evo_container evo_container__page_top">
 		<?php
 			// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
-			skin_container( NT_('Page Top'), array(
+			widget_container( 'page_top', array(
 					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => true, // Display container anyway even if no widget
+					'container_start'     => '<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8"><div class="evo_container $wico_class$">',
+					'container_end'       => '</div></div>',
 					'block_start'         => '<div class="evo_widget $wi_class$">',
 					'block_end'           => '</div>',
 					'block_display_title' => false,
@@ -110,16 +107,14 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 				) );
 			// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
 		?>
-		</div>
-	</div><!-- .col -->
 
-	<div class="coll-xs-12 col-sm-12 col-md-8 col-md-pull-4">
-		<div class="evo_container evo_container__header">
 		<?php
 			// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			skin_container( NT_('Header'), array(
+			widget_container( 'header', array(
 					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => true, // Display container anyway even if no widget
+					'container_start'   => '<div class="coll-xs-12 col-sm-12 col-md-8 col-md-pull-4"><div class="evo_container $wico_class$">',
+					'container_end'     => '</div></div>',
 					'block_start'       => '<div class="evo_widget $wi_class$">',
 					'block_end'         => '</div>',
 					'block_title_start' => '<h1>',
@@ -127,8 +122,6 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 				) );
 			// ----------------------------- END OF "Header" CONTAINER -----------------------------
 		?>
-		</div>
-	</div><!-- .col -->
 
 </header><!-- .row -->
 
@@ -179,15 +172,13 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 	<aside class="col-md-4<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' pull-left' : '' ); ?>">
 		<?php
 		if( $Skin->is_visible_container( 'sidebar' ) )
-		{ // Display 'Sidebar' widget container
-		?>
-		<!-- =================================== START OF SIDEBAR =================================== -->
-		<div class="evo_container evo_container__sidebar">
-		<?php
+		{	// Display 'Sidebar' widget container:
 			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
-			// Display container contents:
-			skin_container( NT_('Sidebar'), array(
+			widget_container( 'sidebar', array(
 					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
 					// This will enclose each widget in a block:
 					'block_start' => '<div class="evo_widget panel $wi_class$">',
 					'block_end' => '</div>',
@@ -217,20 +208,17 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 					'search_submit_after'  => '</span></div>',
 				) );
 			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
+		} ?>
 
 		<?php
 		if( $Skin->is_visible_container( 'sidebar2' ) )
-		{ // Display 'Sidebar 2' widget container
-		?>
-		<div class="evo_container evo_container__sidebar2">
-		<?php
-			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
-			// Display container contents:
-			skin_container( NT_('Sidebar 2'), array(
+		{	// Display 'Sidebar 2' widget container:
+			// ------------------------- "Sidebar 2" CONTAINER EMBEDDED HERE --------------------------
+			widget_container( 'sidebar', array(
 					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
 					// This will enclose each widget in a block:
 					'block_start' => '<div class="evo_widget panel $wi_class$">',
 					'block_end' => '</div>',
@@ -259,10 +247,8 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 					'search_submit_before' => '<span class="input-group-btn">',
 					'search_submit_after'  => '</span></div>',
 				) );
-			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
+			// ----------------------------- END OF "Sidebar 2" CONTAINER -----------------------------
+		} ?>
 
 	</aside><!-- .col -->
 	<?php } ?>
@@ -277,20 +263,18 @@ elseif( $Skin->get_setting( 'container_width' ) == 'wide_container' ) {
 
 		<?php
 		if( $Skin->is_visible_container( 'footer' ) )
-		{ // Display 'Footer' widget container
-		?>
-		<div class="evo_container evo_container__footer">
-		<?php
-			// Display container and contents:
-			skin_container( NT_("Footer"), array(
-					// The following params will be used as defaults for widgets included in this container:
-					'block_start'       => '<div class="evo_widget $wi_class$">',
-					'block_end'         => '</div>',
+		{	// Display 'Footer' widget container:
+			// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
+			widget_container( 'footer', array(
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
+					'block_start'     => '<div class="evo_widget $wi_class$">',
+					'block_end'       => '</div>',
 				) );
-			// Note: Double quotes have been used around "Footer" only for test purposes.
-		?>
-		</div>
-		<?php } ?>
+			// ----------------------------- END OF "Footer" CONTAINER -----------------------------
+		} ?>
 
 		<p>
 			<?php

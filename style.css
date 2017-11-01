@@ -53,7 +53,6 @@ a[rel~=nofollow]:not([class~=btn]):hover {
   margin-bottom: 0 !important;
 }
 a img {
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 a img:hover {
@@ -196,7 +195,6 @@ div.compact_search_form input.search_field {
   margin: 0;
   box-shadow: none;
   border: 1px solid;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 div.compact_search_form .search_submit,
@@ -554,29 +552,29 @@ div.error_additional_content {
   letter-spacing: 3px;
 }
 .evo_container__sidebar,
-.evo_container__sidebar2 {
+.evo_container__sidebar_2 {
   font-size: 13px;
 }
 .evo_container__sidebar ul,
-.evo_container__sidebar2 ul {
+.evo_container__sidebar_2 ul {
   margin: 0 0 0 15px;
 }
 .evo_container__sidebar .evo_widget,
-.evo_container__sidebar2 .evo_widget {
+.evo_container__sidebar_2 .evo_widget {
   box-shadow: none;
   padding: 15px 0;
   margin-bottom: 20px;
 }
 .evo_container__sidebar .evo_widget a:hover,
-.evo_container__sidebar2 .evo_widget a:hover {
+.evo_container__sidebar_2 .evo_widget a:hover {
   background-color: transparent;
 }
 .evo_container__sidebar .evo_widget .widget-heading,
-.evo_container__sidebar2 .evo_widget .widget-heading {
+.evo_container__sidebar_2 .evo_widget .widget-heading {
   margin-bottom: 10px;
 }
 .evo_container__sidebar .evo_widget .widget-heading .widget-heading-title,
-.evo_container__sidebar2 .evo_widget .widget-heading .widget-heading-title {
+.evo_container__sidebar_2 .evo_widget .widget-heading .widget-heading-title {
   margin-top: 0;
   font-size: 14px;
   font-weight: 700;
@@ -588,7 +586,6 @@ nav.site_pagination a {
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   padding: 10px 20px;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 nav.site_pagination a:hover,
@@ -611,7 +608,6 @@ ul.pagination li a:hover {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.05);
   border: none;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 .pager li a:hover,
@@ -636,7 +632,6 @@ div.log_container {
 }
 .evo_post_title h2 a,
 .evo_post_title h1 a {
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .evo_post_title a.edit_post_button {
@@ -668,7 +663,6 @@ input.btn-primary {
   padding: 6px 12px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .evo_panel__register .search,
@@ -685,7 +679,6 @@ input.btn-success,
 a.btn-primary,
 input.btn-primary {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .SaveButton.btn-info:hover,
