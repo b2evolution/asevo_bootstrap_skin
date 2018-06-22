@@ -40,7 +40,7 @@ $params = array_merge( array(
 		// Controlling the title:
 		'disp_title'                 => true,
 		'item_title_line_before'     => '<div class="evo_post_title' . $title_classes . '">',	// Note: we use an extra class because it facilitates styling
-			'item_title_before'          => '<h2>',	
+			'item_title_before'          => '<h2>',
 			'item_title_after'           => '</h2>',
 			'item_title_single_before'   => '<h1>',	// This replaces the above in case of disp=single or disp=page
 			'item_title_single_after'    => '</h1>',
@@ -250,8 +250,8 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 		// Note: You can customize the default item feedback by copying the generic
 		// /skins/_item_feedback.inc.php file into the current skin folder.
 		// ---------------------- END OF FEEDBACK (COMMENTS/TRACKBACKS) ---------------------
-	
-		if( $disp == 'single' || $disp == 'page' ) {	
+
+		if( $disp == 'single' || $disp == 'page' ) {
 		skin_include( '_item_comment_form.inc.php', array_merge( array(
 				'form_title_start'     => '<div class="comment-form '.( $Session->get('core.preview_Comment') ? 'panel-danger' : 'panel-default' ).'">'
 																.'<div class="form-heading"><h4 class="panel-title">',

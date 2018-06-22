@@ -53,7 +53,6 @@ a[rel~=nofollow]:not([class~=btn]):hover {
   margin-bottom: 0 !important;
 }
 a img {
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 a img:hover {
@@ -196,7 +195,6 @@ div.compact_search_form input.search_field {
   margin: 0;
   box-shadow: none;
   border: 1px solid;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 div.compact_search_form .search_submit,
@@ -243,6 +241,12 @@ textarea.message_text {
 .evo_comment .widget-heading {
   margin-bottom: 15px;
 }
+.evo_comment footer.evo_comment_info .action_btn_group {
+  float: right;
+}
+.evo_comment footer.evo_comment_footer .action_btn_group {
+  float: right;
+}
 .evo_content_block .evo_comment_avatar img {
   border-radius: 4px;
 }
@@ -259,6 +263,9 @@ textarea.message_text {
 }
 .disp_comments .evo_comment .panel-body {
   padding: 15px 0 0;
+}
+.disp_comments .evo_comment .evo_comment_title {
+  margin-bottom: 10px;
 }
 .comment-form .form-heading h4 {
   text-align: center;
@@ -376,6 +383,15 @@ textarea.message_text {
 }
 .evo_post section div a {
   text-decoration: underline;
+}
+.evo_post section .evo_comment .evo_comment_title a {
+  text-decoration: none;
+}
+.evo_post section .evo_comment .evo_comment_title a:hover {
+  text-decoration: underline;
+}
+.evo_post section .evo_comment .evo_comment_footer .action_btn_group a {
+  text-decoration: none;
 }
 .evo_post_gallery {
   text-align: center;
@@ -526,6 +542,16 @@ div.bSideItem h4 {
   background-color: transparent;
   font-weight: 700;
 }
+.widget-body::after {
+  clear: both;
+  display: table;
+  content: " ";
+}
+.comment-body::after {
+  clear: both;
+  display: table;
+  content: " ";
+}
 main > h2 {
   margin-bottom: 2em;
   border-bottom: 2px solid;
@@ -588,7 +614,6 @@ nav.site_pagination a {
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   padding: 10px 20px;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 nav.site_pagination a:hover,
@@ -611,7 +636,6 @@ ul.pagination li a:hover {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.05);
   border: none;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 .pager li a:hover,
@@ -636,7 +660,6 @@ div.log_container {
 }
 .evo_post_title h2 a,
 .evo_post_title h1 a {
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .evo_post_title a.edit_post_button {
@@ -668,7 +691,6 @@ input.btn-primary {
   padding: 6px 12px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .evo_panel__register .search,
@@ -685,7 +707,6 @@ input.btn-success,
 a.btn-primary,
 input.btn-primary {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
 .SaveButton.btn-info:hover,

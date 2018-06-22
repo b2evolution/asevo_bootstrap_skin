@@ -267,18 +267,29 @@ textarea.message_text {
 	.widget-heading {
 		margin-bottom: 15px;
 	}
+
+	footer.evo_comment_info .action_btn_group {
+		float: right;
+	}
+
+	footer.evo_comment_footer .action_btn_group {
+		float: right;
+	}
+
+
 }
 .evo_content_block .evo_comment_avatar img {
 	border-radius: 4px;
 }
 
+// disp=comments
 .disp_comments {
 	.evo_comment {
 		.panel-heading {
 			background: 0;
 			border: none;
 			padding: 0;
-			
+
 			> h4 {
 				float: none !important;
 				a:hover {
@@ -288,6 +299,9 @@ textarea.message_text {
 		}
 		.panel-body {
 			padding: 15px 0 0;
+		}
+		.evo_comment_title {
+			margin-bottom: 10px;
 		}
 	}
 }
@@ -398,13 +412,26 @@ textarea.message_text {
 			}
 		}
 	}
-	
+
 	.post-info {
 		margin: 4px 0 10px;
 	}
-	
-	section div a {
-		text-decoration: underline;
+
+	section  {
+		div a {
+			text-decoration: underline;
+		}
+		.evo_comment {
+			.evo_comment_title a {
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			.evo_comment_footer .action_btn_group a {
+				text-decoration: none;
+			}
+		}
 	}
 }
 .evo_post_gallery {
@@ -562,13 +589,25 @@ div.bSideItem {
 			margin: 0;
 			width: 100%;
 			max-width: 290px;
-			
+
 			#bCalendarToday {
 				background-color: transparent;
 				font-weight: 700;
 			}
 		}
 	}
+}
+
+.widget-body::after {
+	clear: both;
+	display: table;
+	content: " "
+}
+
+.comment-body::after {
+	clear: both;
+	display: table;
+	content: " "
 }
 
 // Main content
@@ -605,11 +644,11 @@ div.error_403, div.error_404, div.error_additional_content {
 		box-shadow: none;
 		padding: 15px 0;
 		margin-bottom: 20px;
-		
+
 		a:hover {
 			background-color: transparent;
 		}
-		
+
 		.widget-heading {
 			margin-bottom: 10px;
 			.widget-heading-title {
