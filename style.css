@@ -241,6 +241,12 @@ textarea.message_text {
 .evo_comment .widget-heading {
   margin-bottom: 15px;
 }
+.evo_comment footer.evo_comment_info .action_btn_group {
+  float: right;
+}
+.evo_comment footer.evo_comment_footer .action_btn_group {
+  float: right;
+}
 .evo_content_block .evo_comment_avatar img {
   border-radius: 4px;
 }
@@ -257,6 +263,9 @@ textarea.message_text {
 }
 .disp_comments .evo_comment .panel-body {
   padding: 15px 0 0;
+}
+.disp_comments .evo_comment .evo_comment_title {
+  margin-bottom: 10px;
 }
 .comment-form .form-heading h4 {
   text-align: center;
@@ -374,6 +383,15 @@ textarea.message_text {
 }
 .evo_post section div a {
   text-decoration: underline;
+}
+.evo_post section .evo_comment .evo_comment_title a {
+  text-decoration: none;
+}
+.evo_post section .evo_comment .evo_comment_title a:hover {
+  text-decoration: underline;
+}
+.evo_post section .evo_comment .evo_comment_footer .action_btn_group a {
+  text-decoration: none;
 }
 .evo_post_gallery {
   text-align: center;
@@ -523,6 +541,16 @@ div.bSideItem h4 {
 .widget_plugin_evo_Calr .widget-body table.bCalendarTable #bCalendarToday {
   background-color: transparent;
   font-weight: 700;
+}
+.widget-body::after {
+  clear: both;
+  display: table;
+  content: " ";
+}
+.comment-body::after {
+  clear: both;
+  display: table;
+  content: " ";
 }
 main > h2 {
   margin-bottom: 2em;
