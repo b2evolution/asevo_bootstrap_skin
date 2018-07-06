@@ -117,9 +117,10 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 		{
 			// ------------------------- "Item Single - Header" CONTAINER EMBEDDED HERE --------------------------
 			// Display container contents:
-			skin_container( /* TRANS: Widget container name */ NT_('Item Single Header'), array(
+			widget_container( 'item_single_header', array(
 				'widget_context' => 'item',	// Signal that we are displaying within an Item
 				// The following (optional) params will be used as defaults for widgets included in this container:
+				'container_display_if_empty' => false, // If no widget, don't display container at all
 				// This will enclose each widget in a block:
 				'block_start' => '<div class="evo_widget $wi_class$">',
 				'block_end' => '</div>',
@@ -179,14 +180,12 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	}
 	elseif( $disp == 'page' )
 	{
-		?>
-		<div class="evo_container evo_container__item_page">
-		<?php
 		// ------------------------- "Item Page" CONTAINER EMBEDDED HERE --------------------------
 		// Display container contents:
-		skin_container( /* TRANS: Widget container name */ NT_('Item Page'), array(
+		widget_container( 'item_page', array(
 			'widget_context' => 'item',	// Signal that we are displaying within an Item
 			// The following (optional) params will be used as defaults for widgets included in this container:
+			'container_display_if_empty' => false, // If no widget, don't display container at all
 			// This will enclose each widget in a block:
 			'block_start' => '<div class="evo_widget $wi_class$">',
 			'block_end' => '</div>',
@@ -214,9 +213,6 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 				),
 		) );
 		// ----------------------------- END OF "Item Page" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php
 	}
 	else
 	{
