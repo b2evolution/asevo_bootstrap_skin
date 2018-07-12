@@ -261,6 +261,19 @@ textarea.message_text {
 .disp_comments .evo_comment .panel-heading > h4 a:hover {
   background-color: transparent;
 }
+.disp_comments .evo_comment .panel-heading .evo_status {
+  margin-top: 10px;
+}
+@media screen and (max-width: 640px) {
+  .disp_comments .evo_comment .panel-heading .evo_status {
+    float: none !important;
+    display: inline-block;
+    margin-top: 5px;
+  }
+}
+.disp_comments .evo_comment .panel-heading .panel-title .login.user ~ .label {
+  margin-right: 5px;
+}
 .disp_comments .evo_comment .panel-body {
   padding: 15px 0 0;
 }
