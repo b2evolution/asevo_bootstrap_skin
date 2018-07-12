@@ -21,7 +21,7 @@ class asevo_bootstrap_Skin extends Skin
 	 * Skin version
 	 * @var string
 	 */
-	var $version = '1.0.1';
+	var $version = '6.0.1';
 
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
@@ -59,8 +59,8 @@ class asevo_bootstrap_Skin extends Skin
 	{
 		return 6;
 	}
-	
-	
+
+
 	/**
 	 * Get supported collection kinds.
 	 *
@@ -109,7 +109,7 @@ class asevo_bootstrap_Skin extends Skin
 	 */
 	function get_param_definitions( $params )
 	{
-				
+
 		// Load to use function get_available_thumb_sizes()
 		load_funcs( 'files/model/_image.funcs.php' );
 
@@ -195,8 +195,8 @@ class asevo_bootstrap_Skin extends Skin
 				'section_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_menu_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Menu Settings')
@@ -228,8 +228,8 @@ class asevo_bootstrap_Skin extends Skin
 				'section_menu_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_title_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Post Titles Settings')
@@ -279,8 +279,8 @@ class asevo_bootstrap_Skin extends Skin
 				'section_title_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
-				
+
+
 				'section_mediaidx_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Colorbox Image Zoom')
@@ -295,7 +295,7 @@ class asevo_bootstrap_Skin extends Skin
 				'section_mediaidx_end' => array(
 					'layout' => 'end_fieldset',
 				),
-				
+
 
 				'section_colorbox_start' => array(
 					'layout' => 'begin_fieldset',
@@ -495,7 +495,7 @@ class asevo_bootstrap_Skin extends Skin
 			$custom_css .= ".navbar.navbar-default .navbar-nav .active a { color: $color }\n";
 		}
 
-		
+
 		/**
 		 * Titles customization
 		 */
@@ -507,7 +507,7 @@ class asevo_bootstrap_Skin extends Skin
 		 {
 			 $custom_css .= ".evo_post_title a:hover { color: $color }";
 		 }
-		
+
 
 		if( ! empty( $custom_css ) )
 		{ // Function for custom_css:
