@@ -122,8 +122,10 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 						'link_type' => '#',
 					),
 				// Template params for "Item Visibility Badge" widget:
-				'widget_item_visibility_badge_display'  => ( ! $Item->is_intro() && $Item->status != 'published' ),
-				'widget_item_visibility_badge_template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
+				'widget_item_visibility_badge_display' => ( ! $Item->is_intro() && $Item->status != 'published' ),
+				'widget_item_visibility_badge_params'  => array(
+						'template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
+					),
 			) );
 			// ----------------------------- END OF "Item in List" CONTAINER -----------------------------
 		}
@@ -141,6 +143,7 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 				// This will enclose the title of each widget:
 				'block_title_start' => '<h3>',
 				'block_title_end' => '</h3>',
+				'author_link_text' => $params['author_link_text'],
 				// Template params for "Item Next/Previous" widget:
 				'widget_item_next_previous_params' => array(
 						'block_start' => '<ul class="pager">',
@@ -158,10 +161,10 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 						'link_type' => '#',
 					),
 				// Template params for "Item Visibility Badge" widget:
-				'widget_item_visibility_badge_display'  => ( ! $Item->is_intro() && $Item->status != 'published' ),
-				'widget_item_visibility_badge_template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
-
-				'author_link_text' => $params['author_link_text'],
+				'widget_item_visibility_badge_display' => ( ! $Item->is_intro() && $Item->status != 'published' ),
+				'widget_item_visibility_badge_params'  => array(
+						'template' => '<div class="evo_status evo_status__$status$ badge pull-right" data-toggle="tooltip" data-placement="top" title="$tooltip_title$">$status_title$</div>',
+					),
 			) );
 			// ----------------------------- END OF "Item Single - Header" CONTAINER -----------------------------
 		}
